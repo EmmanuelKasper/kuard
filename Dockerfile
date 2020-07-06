@@ -22,9 +22,9 @@ ENV VERSION=test
 RUN build/build.sh
 
 # STAGE 2: Runtime
-FROM alpine
+FROM debian:buster
 
-USER nobody:nobody
+USER nobody:nogroup
 COPY --from=build /go/bin/kuard /kuard
 
 CMD [ "/kuard" ]
